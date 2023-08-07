@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+    background-color: #f7d7e1;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 800px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  .image-container {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .text-container {
+    flex: 2;
+    padding: 20px;
+  }
+  
+  .image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .image-container img.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+  <div class="content">
+    <div class="image-container">
+      <img class="image" src="vini1.jpg" alt="Imagem 1">
+      <img class="image hidden" src="vini2.jpg" alt="Imagem 2">
+      <img class="image hidden" src="vini3.jpg" alt="Imagem 3">
+    </div>
+    <div class="text-container">
+      <p>Texto ao lado das imagens.</p>
+    </div>
+  </div>
+  
+  <script>
+    const images = document.querySelectorAll('.image');
+    let currentIndex = 0;
+
+    function showNextImage() {
+      images[currentIndex].classList.add('hidden');
+      currentIndex = (currentIndex + 1) % images.length;
+      images[currentIndex].classList.remove('hidden');
+    }
+
+    setInterval(showNextImage, 3000);
+  </script>
+</body>
+</html>
